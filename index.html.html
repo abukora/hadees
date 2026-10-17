@@ -1,0 +1,2407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تخريج الحديث — سلسلة محاضرات الشيخ مؤمن البدوي</title>
+<meta name="description" content="سلسلة محاضرات في علم التخريج ضمن شرح كتاب تخريج الحديث للدكتور عبد العزيز الشايع — أكاديمية نسق">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0f5132;
+  --primary-light: #1a7a4e;
+  --primary-soft: #e8f3ec;
+  --accent: #b8860b;
+  --accent-light: #d4af37;
+  --accent-soft: #fdf6e3;
+  --bg: #faf8f3;
+  --bg-alt: #f2ede3;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #5a5a5a;
+  --border: #e0dccf;
+  --shadow-sm: 0 1px 3px rgba(15,81,50,0.06);
+  --shadow-md: 0 4px 12px rgba(15,81,50,0.08);
+  --shadow-lg: 0 12px 32px rgba(15,81,50,0.12);
+  --font-heading: 'Amiri', serif;
+  --font-body: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif;
+  --sidebar-w: 340px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-full: 999px;
+  --t: 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+[data-theme="dark"] {
+  --primary: #34d399;
+  --primary-light: #10b981;
+  --primary-soft: #0d2a1f;
+  --accent: #fbbf24;
+  --accent-light: #f59e0b;
+  --accent-soft: #2a2110;
+  --bg: #0a0e13;
+  --bg-alt: #121820;
+  --surface: #161d26;
+  --text: #e6e9ed;
+  --text-muted: #8b95a1;
+  --border: #262f3b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 16px;
+  transition: background var(--t), color var(--t);
+  overflow-x: hidden;
+}
+::selection { background: var(--accent-light); color: #1a1a1a; }
+
+/* ===== Progress Bar ===== */
+.reading-progress {
+  position: fixed; top: 0; right: 0;
+  height: 4px; width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.brand-icon {
+  width: 44px; height: 44px; border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  display: grid; place-items: center;
+  color: #fff; font-size: 22px; font-family: var(--font-heading);
+  box-shadow: var(--shadow-sm);
+}
+.brand-text h1 {
+  font-family: var(--font-heading);
+  font-size: 20px; font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+.brand-text p {
+  font-size: 12px; color: var(--text-muted);
+  margin-top: 2px;
+}
+.header-controls { display: flex; gap: 10px; align-items: center; }
+.icon-btn {
+  width: 42px; height: 42px; border-radius: var(--r-md);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); cursor: pointer;
+  display: grid; place-items: center;
+  transition: var(--t);
+  font-size: 18px;
+}
+.icon-btn:hover {
+  background: var(--primary-soft); border-color: var(--primary);
+  color: var(--primary); transform: translateY(-1px);
+}
+.mobile-menu-btn { display: none; }
+
+/* ===== Layout ===== */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  max-width: 1480px;
+  margin: 0 auto;
+  gap: 0;
+  position: relative;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: sticky; top: 73px;
+  height: calc(100vh - 73px);
+  overflow-y: auto;
+  padding: 24px 20px;
+  border-left: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--r-full); }
+.sidebar::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+
+.search-box {
+  position: relative; margin-bottom: 20px;
+}
+.search-box input {
+  width: 100%; padding: 12px 44px 12px 16px;
+  border: 1px solid var(--border); border-radius: var(--r-md);
+  background: var(--surface); color: var(--text);
+  font-family: var(--font-body); font-size: 14px;
+  transition: var(--t);
+}
+.search-box input:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+.search-box::before {
+  content: '🔍'; position: absolute;
+  left: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 14px; opacity: 0.5;
+}
+
+.toc-title {
+  font-family: var(--font-heading);
+  font-size: 14px; font-weight: 700;
+  color: var(--primary); margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--accent);
+  display: flex; align-items: center; gap: 8px;
+}
+.toc-list { list-style: none; }
+.toc-list .toc-item { margin-bottom: 4px; }
+.toc-link {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; border-radius: var(--r-sm);
+  color: var(--text); text-decoration: none;
+  font-size: 13.5px; font-weight: 500;
+  transition: var(--t); cursor: pointer;
+  border: 1px solid transparent;
+}
+.toc-link:hover {
+  background: var(--surface); color: var(--primary);
+  border-color: var(--border);
+}
+.toc-link.active {
+  background: var(--primary); color: #fff;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+.toc-link.active .toc-num { background: rgba(255,255,255,0.2); color: #fff; }
+.toc-num {
+  min-width: 26px; height: 26px; border-radius: var(--r-sm);
+  background: var(--bg); color: var(--primary);
+  display: grid; place-items: center;
+  font-size: 12px; font-weight: 700; font-family: var(--font-heading);
+  flex-shrink: 0;
+}
+.toc-text { flex: 1; line-height: 1.5; }
+.toc-sub {
+  padding-right: 32px; margin-top: 2px;
+  font-size: 12.5px; color: var(--text-muted);
+  display: none;
+}
+.toc-item.expanded .toc-sub { display: block; }
+
+/* ===== Main Content ===== */
+.main {
+  padding: 40px 48px 80px;
+  min-width: 0;
+}
+
+/* ===== Page Hero ===== */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: var(--r-lg);
+  padding: 48px 40px;
+  color: #fff;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.page-hero::before {
+  content: '❝'; position: absolute;
+  top: -30px; left: -20px; font-size: 200px;
+  font-family: var(--font-heading); opacity: 0.08;
+  pointer-events: none;
+}
+.page-hero::after {
+  content: '❞'; position: absolute;
+  bottom: -60px; right: 20px; font-size: 200px;
+  font-family: var(--font-heading); opacity: 0.08;
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-block; padding: 6px 16px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--r-full);
+  font-size: 12px; font-weight: 600;
+  margin-bottom: 16px; letter-spacing: 0.5px;
+}
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 42px; font-weight: 700;
+  line-height: 1.3; margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.hero-sub {
+  font-size: 16px; opacity: 0.92; line-height: 1.7;
+  max-width: 700px; margin-bottom: 24px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 20px;
+  padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);
+}
+.hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.hero-meta-item strong { font-weight: 700; }
+
+/* ===== Lecture Sections ===== */
+.lecture {
+  margin-bottom: 64px;
+  scroll-margin-top: 88px;
+}
+.lecture-header {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  border-right: 5px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.lecture-badge {
+  display: inline-block; padding: 4px 12px;
+  background: var(--accent-soft); color: var(--accent);
+  border-radius: var(--r-sm); font-size: 12px;
+  font-weight: 700; margin-bottom: 10px;
+}
+.lecture-title {
+  font-family: var(--font-heading);
+  font-size: 30px; font-weight: 700;
+  color: var(--primary); line-height: 1.35;
+  margin-bottom: 8px;
+}
+.lecture-subtitle {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== Accordion ===== */
+.accordion {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--t);
+}
+.accordion:hover { box-shadow: var(--shadow-md); }
+.accordion-header {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  background: transparent;
+  border: none; width: 100%;
+  color: var(--text); font-family: var(--font-body);
+  transition: var(--t);
+  text-align: right;
+}
+.accordion-header:hover { background: var(--primary-soft); }
+.accordion-header.open { background: var(--primary-soft); }
+.accordion-header-main { display: flex; align-items: center; gap: 14px; flex: 1; }
+.accordion-icon {
+  width: 36px; height: 36px; border-radius: var(--r-md);
+  background: var(--primary); color: #fff;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 700;
+  font-family: var(--font-heading); flex-shrink: 0;
+}
+.accordion-level-2 .accordion-icon { background: var(--accent); }
+.accordion-level-3 .accordion-icon { background: var(--primary-light); }
+.accordion-title {
+  font-family: var(--font-heading);
+  font-size: 19px; font-weight: 700;
+  color: var(--primary); line-height: 1.4;
+}
+.accordion-toggle {
+  width: 28px; height: 28px; border-radius: var(--r-sm);
+  display: grid; place-items: center;
+  background: var(--bg); color: var(--primary);
+  font-size: 16px; font-weight: 700;
+  transition: transform var(--t);
+  flex-shrink: 0;
+}
+.accordion-header.open .accordion-toggle {
+  transform: rotate(45deg);
+  background: var(--primary); color: #fff;
+}
+.accordion-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-body-inner {
+  padding: 8px 24px 24px;
+}
+
+/* Nested levels */
+.accordion-level-2 { margin-right: 20px; }
+.accordion-level-3 { margin-right: 40px; }
+
+/* ===== Content Typography ===== */
+.content-block { margin-bottom: 20px; }
+.content-block p {
+  font-size: 15.5px; line-height: 1.95;
+  margin-bottom: 12px; color: var(--text);
+}
+.content-block p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: 16.5px; color: var(--text);
+  padding: 16px 20px;
+  background: var(--bg-alt);
+  border-radius: var(--r-md);
+  border-right: 3px solid var(--accent);
+  margin-bottom: 16px;
+}
+
+/* Lists */
+.content-list { list-style: none; padding: 0; }
+.content-list li {
+  position: relative;
+  padding: 8px 28px 8px 0;
+  font-size: 15px; line-height: 1.85;
+  border-bottom: 1px dashed var(--border);
+}
+.content-list li:last-child { border-bottom: none; }
+.content-list li::before {
+  content: '◆'; position: absolute;
+  right: 0; top: 8px;
+  color: var(--accent); font-size: 10px;
+}
+
+.numbered-list { list-style: none; counter-reset: item; }
+.numbered-list li {
+  counter-increment: item;
+  position: relative;
+  padding: 10px 46px 10px 0;
+  font-size: 15px; line-height: 1.85;
+  margin-bottom: 6px;
+}
+.numbered-list li::before {
+  content: counter(item);
+  position: absolute; right: 0; top: 10px;
+  width: 30px; height: 30px;
+  background: var(--primary); color: #fff;
+  border-radius: var(--r-sm);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 13px;
+  font-family: var(--font-heading);
+}
+
+/* Quote */
+.quote-block {
+  background: var(--bg-alt);
+  border-right: 4px solid var(--accent);
+  padding: 18px 22px;
+  border-radius: var(--r-md);
+  margin: 16px 0;
+  font-family: var(--font-heading);
+  font-size: 17px; line-height: 1.85;
+  color: var(--text);
+  position: relative;
+}
+.quote-block::before {
+  content: '❝'; position: absolute;
+  top: 4px; left: 14px;
+  font-size: 32px; color: var(--accent);
+  opacity: 0.4; font-family: var(--font-heading);
+}
+
+/* Ayah/Hadith */
+.ayah {
+  background: linear-gradient(135deg, var(--primary-soft), transparent);
+  border: 1px solid var(--primary);
+  border-radius: var(--r-md);
+  padding: 14px 20px;
+  margin: 12px 0;
+  font-family: var(--font-heading);
+  font-size: 18px; line-height: 1.9;
+  color: var(--primary); text-align: center;
+  font-weight: 700;
+}
+.hadith {
+  background: var(--accent-soft);
+  border-right: 4px solid var(--accent);
+  border-radius: var(--r-md);
+  padding: 14px 20px;
+  margin: 12px 0;
+  font-family: var(--font-heading);
+  font-size: 17px; line-height: 1.9;
+  color: var(--text);
+}
+
+/* Section: الأفكار الرئيسية */
+.section-ideas {
+  background: linear-gradient(135deg, var(--primary-soft), transparent);
+  border-radius: var(--r-md);
+  padding: 18px 22px;
+  margin: 20px 0;
+  border: 1px solid rgba(15,81,50,0.15);
+}
+.section-ideas-title {
+  font-family: var(--font-heading);
+  font-size: 17px; font-weight: 700;
+  color: var(--primary); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-ideas-title::before { content: '💡'; font-size: 20px; }
+
+/* Section: أسئلة مهمة */
+.section-questions {
+  background: var(--bg-alt);
+  border-radius: var(--r-md);
+  padding: 18px 22px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+}
+.section-questions-title {
+  font-family: var(--font-heading);
+  font-size: 17px; font-weight: 700;
+  color: var(--accent); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-questions-title::before { content: '❓'; font-size: 20px; }
+.questions-list { list-style: none; counter-reset: q; }
+.questions-list li {
+  counter-increment: q;
+  position: relative;
+  padding: 8px 38px 8px 0;
+  font-size: 14.5px; line-height: 1.85;
+  border-bottom: 1px solid var(--border);
+}
+.questions-list li:last-child { border-bottom: none; }
+.questions-list li::before {
+  content: 'س' counter(q) ':';
+  position: absolute; right: 0; top: 8px;
+  font-weight: 700; color: var(--accent);
+  font-size: 13px; font-family: var(--font-heading);
+}
+
+/* Summary Card */
+.summary-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border-radius: var(--r-lg);
+  padding: 28px 32px;
+  margin: 32px 0;
+  box-shadow: var(--shadow-md);
+}
+.summary-card-title {
+  font-family: var(--font-heading);
+  font-size: 22px; font-weight: 700;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.summary-card-title::before { content: '📋'; }
+.summary-card ol {
+  list-style: none; counter-reset: sum;
+  padding: 0;
+}
+.summary-card ol li {
+  counter-increment: sum;
+  position: relative;
+  padding: 8px 42px 8px 0;
+  font-size: 15px; line-height: 1.8;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.summary-card ol li:last-child { border-bottom: none; }
+.summary-card ol li::before {
+  content: counter(sum);
+  position: absolute; right: 0; top: 8px;
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--r-sm);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 13px;
+  font-family: var(--font-heading);
+}
+
+/* Loading / Highlight */
+mark {
+  background: var(--accent-light);
+  color: #1a1a1a;
+  padding: 1px 3px; border-radius: 3px;
+  font-weight: 600;
+}
+.search-highlight { animation: pulse 1s ease; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,11,0); }
+  50% { box-shadow: 0 0 0 6px rgba(184,134,11,0.3); }
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed; bottom: 28px; left: 28px;
+  width: 48px; height: 48px;
+  border-radius: var(--r-full);
+  background: var(--primary); color: #fff;
+  border: none; cursor: pointer;
+  display: grid; place-items: center;
+  font-size: 20px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden;
+  transform: translateY(20px);
+  transition: var(--t);
+  z-index: 90;
+}
+.back-to-top.visible {
+  opacity: 1; visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 32px 28px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 40px;
+}
+.site-footer p { margin-bottom: 6px; }
+.site-footer strong { color: var(--primary); font-family: var(--font-heading); font-size: 16px; }
+
+/* Mobile Menu */
+.mobile-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  opacity: 0; transition: opacity var(--t);
+}
+.mobile-overlay.active { display: block; opacity: 1; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  :root { --sidebar-w: 280px; }
+  .main { padding: 32px 28px 60px; }
+  .hero-title { font-size: 34px; }
+  .page-hero { padding: 36px 28px; }
+  .lecture-title { font-size: 26px; }
+}
+
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed; top: 0; right: -100%;
+    width: 85%; max-width: 340px;
+    height: 100vh; z-index: 300;
+    transition: right var(--t);
+    box-shadow: var(--shadow-lg);
+    border-left: none;
+  }
+  .sidebar.open { right: 0; }
+  .mobile-menu-btn { display: grid; }
+  .main { padding: 20px 16px 60px; }
+  .hero-title { font-size: 26px; }
+  .page-hero { padding: 28px 20px; border-radius: var(--r-md); }
+  .lecture-title { font-size: 22px; }
+  .lecture-header { padding: 20px 22px; }
+  .accordion-header { padding: 16px 18px; }
+  .accordion-body-inner { padding: 8px 18px 20px; }
+  .accordion-level-2 { margin-right: 12px; }
+  .accordion-level-3 { margin-right: 24px; }
+  .accordion-title { font-size: 16.5px; }
+  .brand-text h1 { font-size: 16px; }
+  .brand-text p { font-size: 10.5px; }
+  .site-header { padding: 12px 16px; }
+  .summary-card { padding: 22px 20px; }
+  .summary-card-title { font-size: 18px; }
+  .back-to-top { bottom: 20px; left: 20px; width: 42px; height: 42px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 22px; }
+  .hero-sub { font-size: 14px; }
+  .hero-meta { flex-direction: column; gap: 10px; }
+  .lecture-title { font-size: 20px; }
+}
+
+/* Print */
+@media print {
+  .site-header, .sidebar, .back-to-top, .reading-progress, .mobile-overlay { display: none !important; }
+  .layout { grid-template-columns: 1fr; }
+  .main { padding: 0; }
+  .accordion-body { max-height: none !important; }
+  .accordion-toggle { display: none; }
+  .page-hero { background: #0f5132 !important; -webkit-print-color-adjust: exact; }
+  .lecture { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress" id="readingProgress"></div>
+
+<header class="site-header">
+  <div class="header-brand">
+    <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح الفهرس">☰</button>
+    <div class="brand-icon">ح</div>
+    <div class="brand-text">
+      <h1>تخريج الحديث</h1>
+      <p>سلسلة محاضرات — الشيخ مؤمن البدوي</p>
+    </div>
+  </div>
+  <div class="header-controls">
+    <button class="icon-btn" id="themeToggle" aria-label="تبديل الوضع الليلي" title="الوضع الليلي/النهاري">🌙</button>
+    <button class="icon-btn" id="printBtn" aria-label="طباعة" title="طباعة / تصدير PDF">🖨️</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="search-box">
+      <input type="search" id="searchInput" placeholder="ابحث في جميع المحاضرات..." aria-label="بحث">
+    </div>
+    <div class="toc-title">📚 فهرس المحاضرات</div>
+    <ul class="toc-list" id="tocList">
+      <!-- يتم توليدها تلقائيًا بواسطة JS -->
+    </ul>
+  </aside>
+
+  <main class="main" id="mainContent">
+
+    <!-- ============ HERO ============ -->
+    <section class="page-hero">
+      <span class="hero-eyebrow">أكاديمية نسق · المرحلة الجديدة</span>
+      <h2 class="hero-title">تخريج الحديث</h2>
+      <p class="hero-sub">
+        سلسلة محاضرات علمية في شرح كتاب «تخريج الحديث» للدكتور عبد العزيز الشايع،
+        تُقدَّم بهيكل أكاديمي منسق: أبواب وفصول ومباحث وأسئلة مهمة وأفكار رئيسية —
+        دون حذف أو إضافة.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><strong>الشيخ:</strong> مؤمن البدوي</div>
+        <div class="hero-meta-item"><strong>الكتاب:</strong> تخريج الحديث</div>
+        <div class="hero-meta-item"><strong>المؤلف:</strong> د. عبد العزيز الشايع</div>
+        <div class="hero-meta-item"><strong>عدد المحاضرات:</strong> 7</div>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 1 ============ -->
+    <section class="lecture" id="lec1">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة الأولى</span>
+        <h3 class="lecture-title">مقدمة في علم التخريج</h3>
+        <p class="lecture-subtitle">مدخل إلى علم الحديث، وصية الإمام الذهبي، شرف العلم، والتعريف بعلم التخريج</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">المقدمة</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p class="lead">الخطبة والترحيب والتعريف بالمرحلة والكتاب المقرر، مع التنبيه على تسمية العلم بـ«علوم الحديث» لا «مصطلح الحديث».</p>
+            <div class="content-block">
+              <p><strong>الكتاب المقرر:</strong> «تخريج الحديث» للدكتور عبد العزيز الشايع، من الكتب النافعة والجيدة في هذا الباب.</p>
+              <p><strong>التنبيه على التسمية:</strong> الشيخ يرى أن «مصطلح الحديث» لا تعطي هذا العلم الكبير حقه، والأولى «علوم الحديث» أو «علوم الرواية» — ويستدل بتسمية العلماء المتقدمين لكتبهم: «الكفاية» للخطيب، «معرفة أنواع علوم الحديث» لابن الصلاح، «معرفة أنواع علم الحديث» للحاكم.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>علم التخريج فرع من علوم الحديث.</li>
+                <li>تسمية العلم بـ«علوم الحديث» أدق من «مصطلح الحديث».</li>
+                <li>الكتاب المقرر من أنفع الكتب في بابه.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما الكتاب المقرر في هذه السلسلة؟ ومن مؤلفه؟</li>
+                <li>لماذا يفضّل الشيخ تسمية العلم بـ«علوم الحديث» على «مصطلح الحديث»؟</li>
+                <li>اذكر ثلاثة من الكتب المصنفة في هذا العلم بأسمائها الأصلية ومؤلفيها.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الأول: منزلة علم الحديث بين علوم الشريعة</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p>علم الحديث هو العلم الخادم لعلوم الشريعة؛ لا يمكن إثبات أي خبر في أي فن من فنون العلم إلا بعلم الحديث. حتى في أمور الدنيا: إذا نقل إليك أحد خبرًا تسأله: من أخبرك؟ «حدثني بمن أخبرك؟». وعلم الحديث هو الذي أثبت الكتب لأصحابها وأثبت الأخبار عن طريق دراسة الأسانيد.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>علم الحديث خادم لجميع علوم الشريعة.</li>
+                <li>به تُثبت الأخبار والكتب لأصحابها.</li>
+                <li>دراسة الأسانيد هي وسيلة الإثبات.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>لماذا يوصف علم الحديث بأنه «خادم لعلوم الشريعة»؟</li>
+                <li>كيف يُثبت علم الحديث الأخبار والكتب لأصحابها؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثاني: وصية الإمام الذهبي</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التعريف بالذهبي:</strong> شيخ الإسلام، وشيخ المحدثين في عصره، من أبرز من تكلم في علم الحديث وصنف في الرجال والتاريخ. من أنفس كتبه: ميزان الاعتدال، سير أعلام النبلاء، تاريخ الإسلام، التذكرة. كان جميل الخط، قال له شيخه لما رأى خطه: «إن خطك يشبه خط المحدثين» — قال: «ففتح عليّ من يومها».</p>
+              <div class="quote-block">فحق على المحدث أن يتورع فيما يؤديه، وأن يسأل أهل المعرفة والورع ليعينوه على إيضاح مروياته، ولا سبيل إلى أن يصير العارف الذي يزكي نقل الأخبار ويجرحهم جهبذًا إلا بإدمان الطلب، والفحص عن هذا الشان، وكثرة المذاكرة، والسهر، والتيقظ، والفهم، مع التقوى والدين المتين، والإنصاف، والتردد إلى مجالس العلماء، والتحري، والإتقان. وإن لا تفعل فدع عنك الكتابة لست منها ولو سودت وجهك بالمداد</div>
+              <p><strong>شرح الوصية:</strong> بغير تقوى وورع لا قيمة للعلم، معادلة العلم لا يظهر عبيرُه ولا فحواه إلا بتقوى الله وبخشيته. وشروط طالب علم الحديث كما ذكرها الذهبي عشرة: إدمان الطلب، الفحص، كثرة المذاكرة، السهر، التيقظ، الفهم، التقوى والدين المتين، الإنصاف، التردد إلى مجالس العلماء، التحري والإتقان.</p>
+              <p><strong>التحذير:</strong> من لم يلتزم بهذه الضوابط «ريح نفسك» — لن تصل. وقال الذهبي: «فعلم الحديث صلف، فأين علم الحديث وأين أهله؟ كدت إلا أراهم إلا في كتاب أو تحت تراب».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>الورع والتقوى أساس الانتفاع بالعلم.</li>
+                <li>شروط تحصيل العلم عشرة أهمها: إدمان الطلب، والفهم، والتقوى، والإنصاف.</li>
+                <li>التحذير من التصدر بغير أهلية.</li>
+                <li>علم الحديث «صلف» — لا يحمله إلا أهله.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر نص وصية الإمام الذهبي من كتاب التذكرة.</li>
+                <li>ما العلاقة بين الورع والتقوى ودراسة العلم؟</li>
+                <li>اذكر عشرة من شروط طالب علم الحديث كما ذكرها الذهبي.</li>
+                <li>بمَ وصف الذهبي حال أهل الحديث في زمانه؟ ولماذا؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٤</div>
+            <span class="accordion-title">الباب الثالث: الدفاع عن العلم والعلماء في زماننا</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p>الأمة اليوم في زمان تطاول الأغمار والصغار على الكبار وأهل العلم، بسبب الجهل بالعلوم عمومًا وبعلم الحديث خصوصًا. من صور ذلك: الطعن في الإمام الألباني («أنا أفهم في الجرح والتعديل أفضل من الألباني»)، والطعن في الحاكم النيسابوري («رجل شيعي»)، والطعن في الإمام الطبري («كتابه شيعي»).</p>
+              <p><strong>الرد:</strong> الحاكم نقل بالإسناد، والتشيّع الذي فيه هو تقديم علي على عثمان، وقد تكلم عن مناقب الشيخين، فكيف يكون رافضيًّا؟ أما الألباني فهو شيخ شيوخنا — «أنت لا تصل أن تكون مسمارًا في نعله». وأهل الحديث هم الطليعة في الذب عن حياض الإسلام، «لا يُشق لهم غبار».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>الأمة تعيش زمان تطاول الأغمار على الكبار.</li>
+                <li>من صور ذلك: الطعن في الألباني والحاكم والطبري.</li>
+                <li>أهل الحديث هم الطليعة في الذب عن الإسلام.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما سبب تطاول الأغمار على كبار العلماء في زماننا؟</li>
+                <li>اذكر ثلاثًا من الطعون المعاصرة في أئمة الحديث، وكيف يُرد عليها.</li>
+                <li>ما المراد بتشيّع الحاكم؟ وهل يقدح ذلك في كتابه؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٥</div>
+            <span class="accordion-title">الباب الرابع: شرف العلم والحث على طلبه</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p class="lead">تصحيح النية، والأدلة من القرآن والسنة والآثار، وقصة قاتل المئة نفس، وحكم دراسة علم الحديث.</p>
+            <div class="content-block">
+              <p><strong>الأدلة من القرآن:</strong></p>
+              <div class="ayah">﴿يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ﴾</div>
+              <div class="ayah">﴿شَهِدَ اللَّهُ أَنَّهُ لَا إِلَٰهَ إِلَّا هُوَ وَالْمَلَائِكَةُ وَأُولُو الْعِلْمِ قَائِمًا بِالْقِسْطِ﴾</div>
+              <div class="ayah">﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾</div>
+              <p><strong>الأدلة من السنة:</strong></p>
+              <div class="hadith">«من يرد الله به خيرًا يفقهه في الدين»</div>
+              <div class="hadith">«إذا مات ابن آدم انقطع عمله إلا من ثلاث: صدقة جارية، أو علم ينتفع به، أو ولد صالح يدعو له»</div>
+              <div class="hadith">«لا حسد إلا في اثنتين: رجل آتاه الله مالًا فسلّطه على هلكته في الحق، ورجل آتاه الله الحكمة فهو يقضي بها ويعلّمها»</div>
+              <p><strong>الآثار:</strong> قال عمر: «موت ألف عابد أهون عند الله من موت عالم بصير بحلال الله وحرامه». وقال علي: «كفى بالعلم شرفًا أن يدّعيه من لا يحسنه، وكفى بالجهل عارًا أن يتبرأ منه من هو فيه».</p>
+              <p><strong>حكم دراسته:</strong> فرض كفاية — إذا قام به البعض سقط عن الكل.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>العلم شرفه عظيم — أدلة من القرآن والسنة والآثار.</li>
+                <li>العالم أفضل من العابد عند الله.</li>
+                <li>حكم دراسة علم الحديث: فرض كفاية.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر ثلاث آيات من القرآن الكريم تدل على شرف العلم.</li>
+                <li>ما الأعمال الثلاثة التي تستمر بعد الموت؟</li>
+                <li>ما أثر عمر بن الخطاب وأثر علي بن أبي طالب في بيان شرف العلم؟</li>
+                <li>ما حكم دراسة علم الحديث؟ وما معنى فرض الكفاية؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٦</div>
+            <span class="accordion-title">الباب الخامس: التعريف بعلم الحديث</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التعريف:</strong> «علم بقوانين يُعرف بها أحوال السند والمتن».</p>
+              <p><strong>موضوعه:</strong> حال الراوي والمروي (السند والمتن).</p>
+              <p><strong>أنواع المتن:</strong> المرفوع (ما أُضيف للنبي ﷺ)، الموقوف (ما أُضيف للصحابي)، المقطوع (ما أُضيف للتابعي فمن دونه).</p>
+              <p><strong>الحديث والخبر والأثر:</strong> الثلاثة مترادفة عند علماء الحديث، خلافًا لمن فصّل بينها من المتأخرين.</p>
+              <p><strong>غايته:</strong> معرفة المقبول والمردود من الروايات، وتمييز الصحيح من السقيم.</p>
+              <p><strong>مكانته:</strong> كالدرة بالنسبة للتاج. ينفي ما علق من أقوال ضعيفة وباطلة، ويثبت الصحيح. قال ابن جماعة: «علم الحديث علم شريف يناسب مكارم الأخلاق ومحاسن الشيم، وهو من علوم الآخرة، فمن حرمه حرم خيرًا كثيرًا».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>تعريف علم الحديث: علم بقوانين يُعرف بها أحوال السند والمتن.</li>
+                <li>موضوعه: الراوي والمروي.</li>
+                <li>غايته: تمييز المقبول من المردود.</li>
+                <li>منزلته: كالدرة في التاج بين العلوم.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما تعريف علم الحديث اصطلاحًا؟</li>
+                <li>ما موضوع علم الحديث؟</li>
+                <li>عرّف: المرفوع، والموقوف، والمقطوع.</li>
+                <li>ما مذهب علماء الحديث في الحديث والخبر والأثر؟</li>
+                <li>ما الغاية الأساسية من دراسة علم الحديث؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٧</div>
+            <span class="accordion-title">الباب السادس: المقصود من دراسة علم التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>المقصد الأول: تيسير الوصول للحديث في المصادر.</strong> مثال: حديث «إنما الأعمال بالنيات» أخرجه البخاري في سبعة مواضع: كتاب بدء الوحي، كتاب الإيمان، كتاب العتق، مناقب الأنصار، كتاب الطلاق، كتاب الإيمان والنذور، كتاب الإكراه. قبل ظهور الطرق: كان الطريق الوحيد تصفح المصادر ورقة ورقة وصفحة صفحة.</p>
+              <p><strong>المقصد الثاني: الصياغة العلمية للتخريج.</strong> كيف تصوغ التخريج صياغة علمية لتوصيل موضع الحديث للمتلقي.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>المقصد الأول: تيسير الوصول للحديث في المصادر.</li>
+                <li>المقصد الثاني: الصياغة العلمية للتخريج.</li>
+                <li>الأوائل استغنوا بالحفظ عن هذه الطرق.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما المقصدان من دراسة التخريج؟</li>
+                <li>في أي كتب البخاري وُجد حديث «إنما الأعمال بالنيات»؟ وكم موضعًا؟</li>
+                <li>كيف كانت الطريقة القديمة لمعرفة موضع الحديث في المصادر؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٨</div>
+            <span class="accordion-title">الباب السابع: نماذج من حفظ الأئمة</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>شروط الحديث الصحيح:</strong> اتصال السند، عدالة الرواة، ضبط الرواة (شروط إيجابية)، وانتفاء الشذوذ والعلة (شروط سلبية).</p>
+              <p><strong>أنواع الضبط:</strong> ضبط صدر، وضبط كتاب. الأئمة الكبار جمعوا بينهما — كالإمام مالك وأحمد والبخاري ومسلم وأبي داود والترمذي والنسائي وابن ماجه والدارمي.</p>
+              <p><strong>نماذج الحفظ:</strong></p>
+              <ul class="content-list">
+                <li><strong>إسحاق بن راهويه:</strong> «لكأني أنظر إلى مئة ألف حديث في كتبي، وثلاثة آلاف أسردها»، «ما سمعت شيئًا إلا وحفظته، ولا حفظت شيئًا قط فنسيته»، «أعرف مكان مئة ألف حديث، وأحفظ سبعة آلاف حديث عن ظهر قلبي، وأحفظ أربعة آلاف حديث مزورة». قال علي بن خشرم: «كان يملي سبعين ألف حديث حفظًا».</li>
+                <li><strong>أحمد بن حنبل:</strong> قال أبو زرعة: «كان يحفظ ألف ألف حديث يمليها من حفظه» — قيل: وما يدريك؟ قال: «ذاكرته فأخذت عليه الأبواب». وقال أحمد: «انتقيت المسند من سبعمائة ألف حديث وخمسة آلاف حديث».</li>
+                <li><strong>يحيى بن معين:</strong> «كتبت بيدي ألف ألف حديث».</li>
+                <li><strong>البخاري:</strong> «أحفظ مئة ألف حديث صحيح، وألف حديث غير صحيح». صحيحه بالمكرر نحو 7000، وبغير المكرر نحو 4000.</li>
+                <li><strong>مسلم:</strong> «صنفت هذا المسند الصحيح من ثلاثمائة ألف حديث مسموعة من شيوخي مباشرة».</li>
+                <li><strong>أبو داود:</strong> «كتبت عن رسول الله ﷺ خمسمائة ألف حديث، انتخبت منها ما ضمنته كتاب السنن».</li>
+              </ul>
+              <p><strong>توضيح:</strong> المليون رواية تشمل المرفوع والموقوف والمقطوع، والحديث الواحد إذا له عشرون طريقًا يبقى حديثًا واحدًا — فالكم جاء من تعدد الطرق.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>الأئمة الكبار جمعوا بين ضبط الصدر وضبط الكتاب.</li>
+                <li>نماذج مضيئة من حفظ الأئمة تحث على علو الهمة.</li>
+                <li>المليون رواية تشمل المرفوع والموقوف والمقطوع.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر تعريف الحديث الصحيح وشروطه.</li>
+                <li>ما الفرق بين ضبط الصدر وضبط الكتاب؟</li>
+                <li>اذكر بعض أقوال إسحاق بن راهويه في حفظه.</li>
+                <li>ماذا قال أبو زرعة عن حفظ أحمد بن حنبل؟ وكيف تحقق من ذلك؟</li>
+                <li>كيف يكون للإمام مليون رواية مع أن الأحاديث أقل؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>علم الحديث خادم لعلوم الشريعة، وبه تُثبت الأخبار والكتب.</li>
+          <li>الأولى تسميته «علوم الحديث» لا «مصطلح الحديث».</li>
+          <li>الورع والتقوى أساس الانتفاع بالعلم — وصية الذهبي.</li>
+          <li>الأمة في زمان تطاول الأغمار على الكبار، وواجب الدفاع عن العلماء.</li>
+          <li>العلم شرفه عظيم — أدلة من القرآن والسنة والآثار.</li>
+          <li>تعريف علم الحديث: علم بقوانين يُعرف بها أحوال السند والمتن.</li>
+          <li>موضوعه: الراوي والمروي. أنواع المتن: مرفوع، موقوف، مقطوع.</li>
+          <li>الحديث والخبر والأثر مترادفة عند علماء الحديث.</li>
+          <li>غايته: تمييز المقبول من المردود. حكم دراسته: فرض كفاية.</li>
+          <li>علم التخريج فرع من علوم الحديث، ومقصوداه: تيسير الوصول، والصياغة العلمية.</li>
+          <li>الأوائل استغنوا بالحفظ عن طرق التخريج.</li>
+          <li>نماذج مضيئة من حفظ الأئمة تحث على علو الهمة.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 2 ============ -->
+    <section class="lecture" id="lec2">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة الثانية</span>
+        <h3 class="lecture-title">تعريف التخريج وعلم التخريج ونشأته</h3>
+        <p class="lecture-subtitle">تعريف التخريج لغة واصطلاحًا، الإطلاقات، الفرق بين التخريج وعلم التخريج، أطواره الخمسة</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">المقدمة وبيان موضوع المجلس</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p class="lead">محاور المجلس: تعريف التخريج وعلم التخريج والفرق بينهما، بيان معانيه عند المحدثين، تطوره ومراحله، العلاقة بينه وبين دراسة الأسانيد.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الأول: اجتهاد العلماء قبل ظهور طرق التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>تنبيه على مسألة الحفظ:</strong> «حافظ البخاري» في عرف المتأخرين = حفظ أصول الأحاديث/المتون، لا الكتاب بترتيبه وأسانيده. ترتيب البخاري: يبدأ بالمتفق عليه، ثم ما تفرد به البخاري، ثم مسلم، ثم أبو داود على الشيخين، ثم الترمذي على الثلاثة، ثم النسائي على الأربعة، ثم ابن ماجه على الخمسة.</p>
+              <p><strong>قصة السيوطي مع سنن ابن ماجه:</strong> كل مرة يطالع فيها السنن تقريبًا يمر على الخبر ثلاث مرات؛ لأجل الوقوف على رواية واحدة.</p>
+              <p><strong>قصة السيوطي مع شيخه تقي الدين الشبلي:</strong> قال في «حسن المحاضرة»: «ولزمت في الحديث والعربية شيخنا الإمام العلامة تقي الدين الشبلي الحنفي، فواظبت أربع سنين، وشهد لي غير مرة بالتقدم في العلوم بلسانه وبنانه».</p>
+              <p><strong>قصة حديث أبي الحمراء:</strong> أورده السيوطي في حاشيته على الشفاء وعزاه لابن ماجه، فبحث عنه ثلاث مرات فلم يجده، ثم وجده في «معجم الصحابة» لابن قانع، فأخبر شيخه فضرب على «ابن ماجه» وألحق «ابن قانع» في الحاشية — امتثالًا لتلميذه.</p>
+              <p><strong>قصة أحمد شاكر:</strong> بحث عن حديث في سنن الترمذي خمس سنين! قال في مقدمته لـ«مفتاح كنوز السنة» (ترجمة محمد فؤاد عبد الباقي، تصنيف المستشرق فينسينك الهولندي): «قل لبثت خمس سنين وأنا أطلب حديثًا معينًا من سنن الترمذي، وهو كتاب تلقيته كله سماعًا، ولي به شبه اختصاص» — ومع ذلك ما عرف الوصول إليه.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>قبل ظهور طرق التخريج كان العلماء يتعبون كثيرًا في الوصول للروايات.</li>
+                <li>قصص السيوطي وأحمد شاكر تدل على حجم المعاناة.</li>
+                <li>أهمية تزكية الشيوخ وتوثيق النسب العلمي.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما المقصود بـ«حفظ البخاري» في عرف طلبة العلم اليوم؟</li>
+                <li>ما ترتيب البخاري في صحيحه للأحاديث؟</li>
+                <li>اذكر قصة السيوطي مع سنن ابن ماجه.</li>
+                <li>ما القصة التي وقعت للسيوطي مع شيخه في حديث أبي الحمراء؟ وما دلالتها؟</li>
+                <li>كم لبث أحمد شاكر يبحث عن حديث في سنن الترمذي؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثاني: تعريف التخريج لغةً واصطلاحًا</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>لغةً:</strong> مصدر خرّج يُخرّج — الإبراز والإظهار.</p>
+              <p><strong>اصطلاحًا:</strong> عزو الحديث إلى من يرويه بالإسناد.</p>
+              <p><strong>«من يرويه»:</strong> أصحاب الكتب التي صُنفت بالأسانيد — البخاري، مسلم، أبو داود، الترمذي، النسائي، ابن ماجه، مالك، أحمد، الدارمي، ابن خزيمة، ابن حبان، ابن الجارود، الطبراني، البيهقي، إلى آخره.</p>
+              <p><strong>تعريف الإسناد:</strong> الإخبار عن طريق المتن، أو حكاية طريق المتن. <em>تنبيه:</em> التعريف المشهور «سلسلة الرجال الموصلة إلى المتن» فيه نظر؛ لأن السلسلة من مقتضاها الاتصال، والاتصال قد يختل بالانقطاع أو الإعضال أو التدليس أو الإرسال أو التعليق. التعريف لا بد أن يكون جامعًا مانعًا.</p>
+              <p><strong>«عن»:</strong> معتبرة بشرط عدم وصف الراوي بالتدليس. طرق التحمل المعتبرة: حدثنا، أخبرنا، قال لي، حدثني، سمعت.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>التخريج اصطلاحًا: عزو الحديث إلى من يرويه بالإسناد.</li>
+                <li>الإسناد: الإخبار عن طريق المتن، لا سلسلة الرجال.</li>
+                <li>«عن» معتبرة بشرط عدم وصف الراوي بالتدليس.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما تعريف التخريج اصطلاحًا؟</li>
+                <li>اذكر عشرة من أصحاب الكتب المسندة.</li>
+                <li>لماذا رجّح الشيخ «الإخبار عن طريق المتن» على «سلسلة الرجال الموصلة إلى المتن»؟</li>
+                <li>ما شروط اعتبار «عن» في الإسناد؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٤</div>
+            <span class="accordion-title">الباب الثالث: إطلاقات مصطلح التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>الإطلاق الأول:</strong> عزو الحديث إلى من يرويه بالإسناد.</p>
+              <p><strong>الإطلاق الثاني:</strong> قال السخاوي: «وقد يتوسع في إطلاقه على مجرد الإخراج والعزو».</p>
+              <p><strong>الإطلاق الثالث:</strong> تعريف السيوطي: «عزو الأحاديث إلى من أخرجها من الأئمة».</p>
+              <p><strong>العبارات الدالة على العزو:</strong> «أخرجه» أو «رواه».</p>
+              <p><strong>معاني «العزو»:</strong> الربط والنسبة والإسناد.</p>
+              <p><strong>معاني «الحديث»:</strong> المعنى الخاص — ما أُضيف للنبي ﷺ من قول أو فعل أو تقرير أو صفة. المعنى العام — ما أُضيف للنبي ﷺ أو الصحابي أو التابعي فمن دونه.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>إطلاقات التخريج عند العلماء ثلاثة.</li>
+                <li>العبارات الدالة على العزو: «أخرجه» و«رواه».</li>
+                <li>التخريج يشمل المرفوع والموقوف والمقطوع.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر إطلاقات مصطلح التخريج عند العلماء.</li>
+                <li>ما تعريف السيوطي للتخريج؟</li>
+                <li>ما معنى العزو؟ وما العبارات الدالة عليه؟</li>
+                <li>ما أنواع المتن التي يشملها التخريج؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٥</div>
+            <span class="accordion-title">الباب الرابع: المصادر الأصلية والفرعية</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>المصدر الأصلي:</strong> الكتاب الذي يروي فيه المؤلف الحديث بإسناده. مثل: الكتب الستة + مسند أحمد + موطأ مالك + سنن الدارمي (= الكتب التسعة).</p>
+              <p><strong>المصدر الفرعي:</strong> الكتاب الذي يذكر فيه المؤلف الحديث بلا سند. مثل: رياض الصالحين، الترغيب والترهيب للمنذري، جامع الأصول لابن الأثير، بلوغ المرام لابن حجر.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>المصدر الأصلي: الكتاب المسند.</li>
+                <li>المصدر الفرعي: الكتاب الذي يذكر المتون فقط.</li>
+                <li>الكتب التسعة: الستة + الموطأ + سنن الدارمي + مسند أحمد.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما الفرق بين المصدر الأصلي والمصدر الفرعي؟</li>
+                <li>ما الكتب التي تكمل بها الكتب الستة لتصبح تسعة؟</li>
+                <li>اذكر أمثلة للمصادر الفرعية.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٦</div>
+            <span class="accordion-title">الباب الخامس: هل يلزم من التخريج بيان درجة الحديث؟</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>مذهب المعاصرين:</strong> «مع بيان درجته عند الحاجة».</p>
+              <p><strong>الرد — ثلاثة أوجه:</strong></p>
+              <ol class="numbered-list">
+                <li>الثمرة لا تُذكر في التعريف — بيان الدرجة هي الثمرة والغاية، والثمرة لا تُذكر في التعريف عند أهل الفن.</li>
+                <li>عدم التزام الأئمة ببيان الدرجة — كالزيلعي والعراقي وابن حجر في «التلخيص الحبير» — في مواضع يذكرون الحكم، وفي مواضع لا.</li>
+                <li>الفصل بين العلمين — جرى العمل عند المعاصرين في الدراسات النظامية على الفصل: علم التخريج (بيان الدلالة على مكان الحديث)، وعلم دراسة الأسانيد (القواعد والضوابط لمعرفة درجة الحديث).</li>
+              </ol>
+              <p><strong>تنبيه:</strong> الصحيح درجات، والضعيف دركات.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>بيان الدرجة خارج عن حقيقة التخريج لثلاثة أوجه.</li>
+                <li>الثمرة لا تُذكر في التعريف.</li>
+                <li>الفصل بين التخريج ودراسة الأسانيد.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما مذهب بعض المعاصرين في تعريف التخريج؟</li>
+                <li>اذكر ثلاثة أوجه للرد على إدخال بيان الدرجة في تعريف التخريج.</li>
+                <li>ما الفرق بين علم التخريج وعلم دراسة الأسانيد عند المعاصرين؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٧</div>
+            <span class="accordion-title">الباب السادس: نشأة علم التخريج وأطواره</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>الطور الأول — البذوغ والتأليف:</strong> النواة الأولى في العصر الذهبي للتدوين. استُخدم «التخريج» بمعنى التأليف — كما في كلام الإمام مسلم في مقدمة صحيحه: «ثم إنا إن شاء الله مبتدئون في تخريج ما سألت وتأليفه على شريطه سوف أذكرها لك». واستُخدم بمعنى الانتخاب — كـ«الفوائد المنتخبة الغرائب العوالي من حديث أبي إسحاق المزكي النيسابوري»، انتخاب الدارقطني (ت 385)، انتخاب الخطيب البغدادي (ت 403).</p>
+              <p><strong>الطور الثاني — الاستخراج:</strong> حتى القرن الخامس. كـمستخرج الطوسي على الترمذي، ومستخرج أبي بكر النيسابوري على مسلم. الاستخراج: أن يعمد حافظ إلى أحاديث صاحب كتاب بأسانيده، فيخرجها بأسانيد لنفسه، يلتقي مع صاحب الكتاب في شيخه أو شيخ شيخه. فوائده: بيان المبهم، رفع التدليس.</p>
+              <p><strong>الطور الثالث — الرواية عن أصحاب المصنفات:</strong> حتى القرن السادس.</p>
+              <p><strong>الطور الرابع — العزو المباشر:</strong> عمدة الأحكام لعبد الغني المقدسي (ت 600)، الإلمام لابن دقيق العيد (ت 702)، المحرر لابن عبد الهادي (ت 744).</p>
+              <p><strong>الطور الخامس — العزو مع بيان الدرجة:</strong> القرن الثامن فما بعد — نصب الراية للزيلعي، البدر المنير لابن الملقن.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>أطوار علم التخريج خمسة.</li>
+                <li>الاستخراج: إخراج أحاديث كتاب بأسانيد لنفسه.</li>
+                <li>تطور العزو من مجرد العزو إلى العزو مع الحكم.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر أطوار علم التخريج الخمسة.</li>
+                <li>ما تعريف الاستخراج؟ واذكر أمثلته.</li>
+                <li>ما فوائد المستخرجات؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٨</div>
+            <span class="accordion-title">الباب السابع: التعريف الجامع والفرق بين التخريج وعلم التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التعريف الجامع:</strong> «عزو الحديث إلى مصادره الأصلية مع حكاية أقوال أصحاب المصادر في بيان درجته».</p>
+              <p><strong>الفرق:</strong></p>
+              <ul class="content-list">
+                <li><strong>التخريج:</strong> عملية البحث والتفتيش عن الحديث في المصادر ثم الدلالة على موضعه فيها.</li>
+                <li><strong>علم التخريج:</strong> القواعد والطرق التي يستعملها الباحث في عملية البحث عن الحديث وصياغته، أو معرفة الطرق الموصلة إلى الأحاديث في مصادرها وقواعد عزوها.</li>
+              </ul>
+              <p><strong>المصنفات في علم التخريج:</strong> حصول التفريج بأصول التخريج (أحمد الغماري)، أصول التخريج ودراسة الأسانيد (محمود الطناحي)، تخريج الحديث (عبد العزيز الشايع)، المدخل إلى تخريج الأحاديث (عبد الصمد بن بكر العابد)، طرق تخريج الحديث (عبد المهدي عبد القادر)، تخريج الحديث نشأته ومنهجيته (محمد أبو الليث الخير آبادي).</p>
+              <p><strong>تنبيه:</strong> البرامج الحديثة وسيلة مساعدة لا أصل — «الأصل أن تأخذ العلم من بطون الكتب عند العلماء».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>التعريف الجامع لعلم التخريج.</li>
+                <li>التخريج: عملية عملية. علم التخريج: قواعد وطرق.</li>
+                <li>البرامج الحديثة وسيلة لا أصل.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما أولى التعاريف بعلم التخريج؟</li>
+                <li>ما الفرق بين التخريج وعلم التخريج؟</li>
+                <li>اذكر ستة من المصنفات في علم التخريج ومؤلفيها.</li>
+                <li>ما موقف الشيخ من البرامج الحديثة؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>قبل طرق التخريج كان العلماء يتعبون كثيرًا في الوصول للروايات.</li>
+          <li>«حفظ البخاري» في عرف المتأخرين = حفظ أصول الأحاديث/المتون.</li>
+          <li>قصص من تعب العلماء: السيوطي (ثلاث مرات)، أحمد شاكر (خمس سنين).</li>
+          <li>التخريج لغةً: الإبراز والإظهار. اصطلاحًا: عزو الحديث إلى من يرويه بالإسناد.</li>
+          <li>الإسناد: الإخبار عن طريق المتن (لا «سلسلة الرجال»).</li>
+          <li>الفرق بين المصدر الأصلي والفرعي.</li>
+          <li>مسألة بيان الدرجة: خارج عن حقيقة التخريج لثلاثة أوجه.</li>
+          <li>أطوار علم التخريج الخمسة.</li>
+          <li>التعريف الجامع لعلم التخريج.</li>
+          <li>الفرق بين التخريج وعلم التخريج.</li>
+          <li>الحث على الفهم والتلقي المباشر عن الشيوخ.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 3 ============ -->
+    <section class="lecture" id="lec3">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة الثالثة</span>
+        <h3 class="lecture-title">أهمية التخريج وثمرته وفائدته وأبرز المؤلفات فيه</h3>
+        <p class="lecture-subtitle">14 فائدة للتخريج، الأمانة العلمية، وأبرز كتب التخريج</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">الباب الأول: أهمية التخريج في العصر الحالي</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p>تراجع الاعتناء بإخراج الكتب مع الاعتماد على الموسوعات الإلكترونية وكتب PDF، وانتشار ظاهرة «التحقيق الصوري» — حيث يُقال: «حققه وخرجه وضبط نصه فلان» — ثم يُفتح الكتاب فلا يوجد تخريج ولا ضبط نص، مجرد عناوين. قال الشيخ: «ولو حبيت تستبدل العبارة تصف حاله: سرقة ونسبة لنفسه».</p>
+              <p><strong>قصة الشيخ في الأمانة العلمية:</strong> كان مشرفًا علميًّا لدار نشر كبيرة، فجاءه كتاب فيه نقل من كتب معاصرة دون نسبة في أكثر من موضع. لما نوقش صاحب العمل قال: «الكتب على المشاع، طالما مبذولة، محدش له حاجة عندي أنقل زي ما أنا عايز». فرد الشيخ بأن هذا قانون جديد اخترعه، وأن أي حرف تنقله لا بد أن تنسبه لقائله. سُئل المسؤول عن الدار: «ده اسمه إيه في كلمة واحدة؟» — قال: «سرقة». فكتب الشيخ تقريرًا بأن الكتاب لا يصلح للطباعة.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>أهمية التخريج تظهر في العصر الحاضر.</li>
+                <li>ظاهرة التحقيق الصوري والسرقة العلمية.</li>
+                <li>الأمانة العلمية شرط أساسي في التخريج.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>لماذا أصبح علم التخريج من الأهمية بمكان في هذا العصر؟</li>
+                <li>ما ظاهرة التحقيق الصوري؟ وكيف وصفها الشيخ؟</li>
+                <li>ما حكم نقل كلام المؤلف دون نسبته؟ وما تسميته؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الثاني: فوائد التخريج وثمرته (14 فائدة)</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>1. معرفة درجة الحديث</strong> — أهم الفوائد. طرقها:</p>
+              <ol class="numbered-list">
+                <li>وجود الحديث في الصحيحين (لاشتراط الشيخين الصحة).</li>
+                <li>الوقوف على أحكام النقاد المعتبرين (كابن تيمية والنووي — ليسا من عيون المحدثين لكنهما يلتزمان بقواعدهم).</li>
+                <li>وجود الحديث في كتاب التزم التصنيف في المقبول (كصحيح ابن خزيمة، والمنتقى لابن الجارود، وصحيح ابن حبان) — إلا أن يعلّه صاحبه.</li>
+                <li>وجود الحديث في كتب الموضوعات (كالموضوعات لابن الجوزي). <em>تحذير:</em> الحديث الموضوع لا يحل روايته إلا على سبيل التحذير.</li>
+                <li>الوقوف على إسناد الحديث ودراسته للمتأهل — بالنظر في الرواة وكتب العلل وكتب الرجال.</li>
+              </ol>
+              <p><strong>2. الوقوف على أقوال أئمة الحديث في نقد الرجال والحديث.</strong> من كتب الرجال: تهذيب الكمال للمزي، سير أعلام النبلاء للذهبي. من الأئمة الذين يعتنون ببيان ذلك: الترمذي في جامعه. تبويبات البخاري دليل على فقهه — «أعجب لمن يقول إن البخاري ليس من الفقهاء!».</p>
+              <p><strong>3. تقوية الحديث.</strong> بالمتابعات والشواهد. <em>قاعدة:</em> الخطأ لا يُجبر بغيره. متى نقول «تابعه فلان» وتُعتبر؟ لما يكون النص على ضعفه فقط، ولم يقفوا على خطأ بشكل واضح وصريح.</p>
+              <p><strong>4. معرفة فقه الحديث من خلال تبويب الأئمة.</strong> رد على من يزعم أن المحدثين لا علاقة لهم بالفقه.</p>
+              <p><strong>5. معرفة الاتصال والانقطاع في الإسناد.</strong></p>
+              <p><strong>6. معرفة الخلل من التصحيف والتحريف.</strong></p>
+              <p><strong>7. تعيين المبهم وتمييز المهمل.</strong></p>
+              <p><strong>8. تحديد من لم يُحدد من رجال الإسناد</strong> (بالكنية أو اللقب أو النسبة) — في الغالب في المستخرجات.</p>
+              <p><strong>9. الوقوف على التصريح بالسماع في رواية المدلس.</strong> بشرط صحة الإسناد إلى المدلس.</p>
+              <p><strong>10. تمييز الرواة المخلطين</strong> (قبل الاختلاط وبعده).</p>
+              <p><strong>11. معرفة الناسخ والمنسوخ.</strong></p>
+              <p><strong>12. الكشف عن مشكل الحديث وبيانه.</strong></p>
+              <p><strong>13. تقريب السنن للمسلمين.</strong></p>
+              <p><strong>14. جمع ألفاظ المتون.</strong></p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>14 فائدة للتخريج.</li>
+                <li>معرفة درجة الحديث أهم الفوائد ولها خمس طرق.</li>
+                <li>الخطأ لا يُجبر بغيره.</li>
+                <li>لا يحل رواية الموضوع إلا للتحذير.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر خمس طرق لمعرفة درجة الحديث من خلال التخريج.</li>
+                <li>ما حكم رواية الحديث الموضوع؟ وما دليل ذلك؟</li>
+                <li>ما الفرق بين إخراج الحديث في الصحيحين وإخراجه في صحيح ابن خزيمة؟</li>
+                <li>متى يتقوى الحديث الضعيف بغيره؟ ومتى لا يتقوى؟</li>
+                <li>كيف يُستدل بتبويبات المحدثين على فقههم؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثالث: أبرز المؤلفات في تخريج الأحاديث</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>نصب الراية</strong> لأحاديث الهداية — لجمال الدين عبد الله بن يوسف الزيلعي (ت 702) — كتاب رائع في بابه من الكتب المميزة.</p>
+              <p><strong>البدر المنير</strong> في تخريج الأحاديث والآثار الواقعة في الشرح الكبير — لأبي حفص عمر بن علي الشهير بابن الملقن (ت 804) — من الكتب المهمة جدًّا.</p>
+              <p><strong>التلخيص الحبير</strong> في تخريج أحاديث شرح الرافعي الكبير — لأحمد بن علي بن محمد الشهير بابن حجر العسقلاني (ت 852) — من أحب الكتب إلى الشيخ، إمام من أئمة الدنيا.</p>
+              <p><strong>نتائج الأفكار</strong> في تخريج أحاديث الأذكار — لابن حجر العسقلاني.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>أربعة من أبرز كتب التخريج.</li>
+                <li>تحديد المؤلف والوفاة.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>عرّف بكتاب نصب الراية ومؤلفه.</li>
+                <li>عرّف بكتاب البدر المنير ومؤلفه.</li>
+                <li>عرّف بكتاب التلخيص الحبير ومؤلفه.</li>
+                <li>عرّف بكتاب نتائج الأفكار ومؤلفه.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٤</div>
+            <span class="accordion-title">الخاتمة والتكليف</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التكليف:</strong> جمع أسماء الكتب وتلخيص النقاط المهمة: اسم الكتاب، اسم المؤلف، سبب التأليف، منهج المؤلف في الكتاب — ويُرسل عبر روابط الأكاديمية.</p>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما التكليف الذي أوصى به الشيخ طلابه في نهاية المجلس؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>أهمية التخريج تظهر في العصر الحاضر.</li>
+          <li>الأمانة العلمية في النقل شرط، والسرقة العلمية آفة.</li>
+          <li>14 فائدة للتخريج أعظمها معرفة درجة الحديث.</li>
+          <li>أبرز كتب التخريج: نصب الراية، البدر المنير، التلخيص الحبير، نتائج الأفكار.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 4 ============ -->
+    <section class="lecture" id="lec4">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة الرابعة</span>
+        <h3 class="lecture-title">أقسام مصادر التخريج وأنواع التخريج</h3>
+        <p class="lecture-subtitle">تنوع مناهج المصنفين، الرد على الطعن في البخاري، المصادر الأصلية (12 نوعًا)، والمصادر الفرعية</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">الباب الأول: تنوع المؤلفات الحديثية</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p>تنوعت المؤلفات بحسب مناهج أصحابها. <strong>البخاري فاق مسلمًا</strong> في الصحة وحسن الصناعة. شرط البخاري عُرف بالاستقراء لا بالنص، وشرط مسلم بالنص. <em>تنبيه:</em> لا يُفهم أن ما ليس في الصحيحين غير صحيح — هناك مئات الآلاف من الأحاديث الصحيحة، لكن البخاري انتقى أصح الصحيح وأجوده.</p>
+              <p><strong>الرد على شبهة «روى عن الضعفاء»:</strong> في فرق بين <em>الراوي الضعيف</em> (غلبت عليه الأحاديث الضعيفة بسبب وهم أو غفلة أو سوء حفظ أو كثرة مخالفة) و<em>الوضّاع/الكذاب</em> (لا وزن له، حديثه مطروح بالكلية). البخاري انتقى ما صح عن الضعيف، وما وافقه فيه الثقات. «كده المسألة واضحة وبسيطة، مش محتاجة الفلسفة».</p>
+              <p><strong>قوادح العدالة:</strong> الكذب، التهمة بالكذب، البدعة الاعتقادية، الجهالة (عين أو حال)، الفسق. البعض أضاف الكفر — لأن الإسلام شرط أداء لا شرط تحمل. حديث أبي سفيان مع هرقل ما قُبل إلا بعد إسلامه، وحديث جبير بن مطعم «فكاد قلبي أن يطير» كان إذ ذاك كافرًا.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>البخاري فاق في الصحة وحسن الصناعة.</li>
+                <li>الفرق بين الضعيف والوضّاع.</li>
+                <li>قوادح العدالة الخمسة (أو الستة).</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>كيف يُرد على من يطعن في البخاري بروايته عن الضعفاء؟</li>
+                <li>ما الفرق بين الراوي الضعيف والوضّاع؟</li>
+                <li>اذكر قوادح العدالة.</li>
+                <li>لماذا كان الكفر قادحًا في العدالة عند البعض؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الثاني: المصادر الأصلية (12 نوعًا)</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>تعريفها:</strong> المؤلفات التي يروي فيها المصنف الأحاديث بإسناده — «كتاب مسند». وهي الأصل في التخريج.</p>
+              <p><strong>أنواعها:</strong></p>
+              <ol class="numbered-list">
+                <li><strong>الموطآت</strong> — مرتبة على الأبواب، وتذكر المعنى العام (مرفوع وموقوف). كموطأ مالك. من الموطآت: موطأ ابن جريج — لما قيل لمالك، قال: «ما كان لله بقي».</li>
+                <li><strong>المصنفات</strong> — كـمصنف عبد الرزاق، ومصنف ابن أبي شيبة — تعتني بالآثار عن الصحابة والتابعين.</li>
+                <li><strong>الجوامع</strong> — ما يوجد فيه جميع أقسام الحديث: العقائد، الأحكام، الرقاق، الآداب، السفر، التفسير، التاريخ، السير، الفتن، المناقب... كجامع البخاري، وجامع الترمذي. اسم صحيح البخاري الحقيقي: «الجامع المسند المختصر من حديث رسول الله ﷺ وسننه وأيامه». مسلم ليس جامعًا لأنه لم يجمع التفسير والقراءة.</li>
+                <li><strong>المسانيد</strong> — مرتبة على مسانيد الصحابة (العشرة أولًا ثم الترتيب الأبجدي). كمسند أحمد، ومسند إسحاق بن راهويه، ومسند الطيالسي، ومسند الدارمي، ومسند عبد بن حميد. <em>تنبيه:</em> العلة لا تُعلّ بالصحابي، وإنما بمن دونه.</li>
+                <li><strong>الصحاح</strong> — كصحيح البخاري، ومسلم، وابن خزيمة، وابن حبان، ومنتقى ابن الجارود.</li>
+                <li><strong>المستخرجات</strong> — إخراج أحاديث كتاب بأسانيد لنفسه.</li>
+                <li><strong>المستدركات</strong> — جمع الأحاديث التي على شرط الشيخين ولم يخرجاها. كالإلزامات للدارقطني — وفيه نظر، لأن الإلزام اجتهاد.</li>
+                <li><strong>السنن</strong> — مرتبة على الأبواب الفقهية. كسنن أبي داود، والدارقطني، والدارمي، والبيهقي.</li>
+                <li><strong>المعاجم</strong> — مرتبة على الصحابة أو الشيوخ أو البلدان. المعجم الكبير (على الصحابة بترتيب أبجدي)، الأوسط (على الشيوخ — قال عنه الطبراني: «هذا الكتاب روحي»)، الصغير (على الشيوخ، حديث واحد عن كل شيخ).</li>
+                <li><strong>المصنفات المفردة</strong> — كالطهور والأموال لأبي عبيد، وتعظيم قدر الصلاة للمروزي، والقدر للفريابي، والأدب المفرد للبخاري، والقراءة خلف الإمام للبخاري، والثواب لأبي الشيخ الأصبهاني.</li>
+                <li><strong>الأجزاء الحديثية المفردة</strong> — بالألوف.</li>
+                <li><strong>المصنفات في العلوم الأخرى</strong> — في التوحيد (السنة لأحمد، خلق أفعال العباد للبخاري)، التفسير (تفسير الطبري، ابن أبي حاتم، عبد الرزاق)، الفقه (الأم للشافعي، مسائل أحمد)، أصول الفقه (الرسالة للشافعي، الفقيه والمتفقه للخطيب)، السير والتاريخ (تاريخ الطبري، مغازي ابن إسحاق، مغازي الواقدي، تاريخ جرجان، واسط، أصفهان).</li>
+              </ol>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>المصادر الأصلية 12 نوعًا.</li>
+                <li>العلاقة بين المصنفات علاقة تكامل لا تفاضل.</li>
+                <li>المستدركات اجتهاد — قد يخطئ صاحبه.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر أنواع المصادر الأصلية.</li>
+                <li>ما الفرق بين الموطآت والمسانيد؟</li>
+                <li>ما الفرق بين المعجم الكبير والأوسط والصغير للطبراني؟</li>
+                <li>ما الفرق بين الصحيح والمستخرج والمستدرك؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثالث: المصادر الفرعية</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>تعريفها:</strong> المؤلفات التي تُذكر فيها الأحاديث بلا إسناد.</p>
+              <p><strong>أنواعها:</strong></p>
+              <ol class="numbered-list">
+                <li><strong>شروح الأحاديث</strong> — على البخاري: شرح الخطابي، شرح ابن بطال، فتح الباري لابن رجب (لم يكتمل، طُبع في سبع مجلدات)، فتح الباري لابن حجر، أعلام الحديث للخطابي. على صحيح مسلم: شرح النووي.</li>
+                <li><strong>المؤلفات في تخريج الأحاديث</strong> — نصب الراية، البدر المنير، التلخيص الحبير.</li>
+                <li><strong>المؤلفات في الزوائد</strong> — مجمع الزوائد للهيثمي، زوائد مسند البزار على الكتب الستة، زوائد أبي يعلى الموصلي على السنن، البدر المنير في زوائد المعجم الكبير للطبراني.</li>
+              </ol>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>المصادر الفرعية: ما يُذكر فيه المتن بلا إسناد.</li>
+                <li>أنواعها ثلاثة: شروح، تخريج، زوائد.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما تعريف المصادر الفرعية؟</li>
+                <li>اذكر أنواع المصادر الفرعية وأمثلة عليها.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>تنوع المؤلفات بحسب مناهج المصنفين.</li>
+          <li>البخاري فاق مسلمًا في الصحة وحسن الصناعة.</li>
+          <li>الرد على شبهة «روى عن الضعفاء» — الفرق بين الضعيف والوضّاع.</li>
+          <li>قوادح العدالة: الكذب، التهمة بالكذب، البدعة، الجهالة، الفسق، الكفر.</li>
+          <li>المصادر قسمان: أصلية (12 نوعًا) وفرعية (3 أنواع).</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 5 ============ -->
+    <section class="lecture" id="lec5">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة الخامسة</span>
+        <h3 class="lecture-title">وظائف المخرج — التمهيد والقسم العام</h3>
+        <p class="lecture-subtitle">التمييز بين المرفوع والموقوف والمقطوع، تحديد الحديث المقصود، وصور ورود الحديث في المصادر، وخطوات صياغة التخريج (8 خطوات)</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">الباب الأول: العناية بالتمييز بين المرفوع والموقوف والمقطوع</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التعريفات:</strong></p>
+              <ul class="content-list">
+                <li><strong>المرفوع:</strong> ما أُضيف إلى النبي ﷺ من قول أو فعل أو تقرير أو صفة.</li>
+                <li><strong>الموقوف:</strong> ما أُضيف إلى الصحابي من قول أو فعل أو تقرير.</li>
+                <li><strong>المقطوع:</strong> ما أُضيف إلى التابعي فمن دونه من قول أو فعل أو تقرير.</li>
+              </ul>
+              <p><strong>الموقوف له حكم الرفع:</strong> هو ما يُذكر من كلام الصحابي، بشرط:</p>
+              <ol class="numbered-list">
+                <li>أن يصح الإسناد إليه.</li>
+                <li>أن يكون الكلام في أمر غيبي لا يُقال إلا بوحي — كالفتن والملاحم وأشراط الساعة ووصف الجنة والنار والشهادة لفلان بالجنة.</li>
+              </ol>
+              <p><strong>أنواع المرفوع:</strong> قول صريح، فعل، إقرار (نحر الفرس، أكل الضب)، صفة (شكله، هيئته، أخلاقه).</p>
+              <p><strong>حديث ابن عباس «الطواف حول البيت مثل الصلاة»:</strong> رُوي مرفوعًا وموقوفًا — أخرجه الترمذي في أبواب الحج من طريق عطاء بن السائب عن طاووس عن ابن عباس مرفوعًا، وأخرجه النسائي في السنن الكبرى في المناسك من طريق إبراهيم بن ميسرة عن طاوس عن ابن عباس موقوفًا. التتمة: «إلا أنكم تتكلمون فيه، فمن تكلم فيه فلا يتكلم إلا بخير».</p>
+              <p><strong>حديث معاوية بن الحكم السلمي:</strong> عطس رجل في الصلاة، فقال له معاوية: «يرحمك الله» — فنظر إليه الصحابة، فأخذوا يضربون على أفخاذهم. فلما انتهى النبي ﷺ قال: «إن هذه الصلاة لا يصلح فيها من كلام الناس شيء، إنما هو الذكر والتسبيح وقراءة القرآن».</p>
+              <p><strong>حديث الأعرابي السائل عن الساعة:</strong> قال: «متى الساعة؟» — فمضى النبي ﷺ في حديثه. فلما انتهى قال: «أين أراه السائل عن الساعة؟» — قال: «إذا ضُيّعت الأمانة فانتظر الساعة» — قال: «فكيف إضاعتها؟» — قال: «إذا وُسّد الأمر إلى غير أهله فانتظر الساعة».</p>
+              <p><strong>الحكمة:</strong> في حديث معاوية لم يقل «أين الذي قال يرحمك الله» لأن الذي تكلم لم يفطن إليه إلا من كان بجواره. أما في حديث الأعرابي فقال «أين أراه السائل» لأنه تكلم على رؤوس الأشهاد.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>الموقوف له حكم الرفع: شرطه صحة الإسناد وتعلقه بأمر غيبي.</li>
+                <li>أنواع المرفوع: قول، فعل، تقرير، صفة.</li>
+                <li>حديث «الطواف مثل الصلاة» رُوي مرفوعًا وموقوفًا.</li>
+                <li>الحكمة النبوية في الفرق بين حديث معاوية وحديث الأعرابي.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>عرّف المرفوع والموقوف والمقطوع.</li>
+                <li>ما الموقوف له حكم الرفع؟ وما شرطه؟</li>
+                <li>اذكر أنواع المرفوع مع التمثيل.</li>
+                <li>ما الفرق بين حديث معاوية بن الحكم وحديث الأعرابي في الحكمة النبوية؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الثاني: تحديد الحديث المقصود تخريجه</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>حالات الحديث مع المصادر:</strong></p>
+              <ol class="numbered-list">
+                <li>اتفاق في الصحابي + اتفاق في المتن لفظًا أو معنى = حديث واحد.</li>
+                <li>اتفاق في الصحابي + اختلاف في المعنى = حديثان.</li>
+                <li>اختلاف في الصحابي + اتفاق في المتن = حديثان (شاهد).</li>
+                <li>اختلاف في الصحابي + اختلاف في اللفظ = حديثان.</li>
+              </ol>
+              <p><strong>صور ورود الحديث في المصادر:</strong></p>
+              <ol class="numbered-list">
+                <li><strong>بإسناده ومتنه</strong> — كقول أبي داود: «حدثنا عثمان بن أبي شيبة ثنا وكيع عن سفيان عن ابن عقيل عن محمد بن الحنفية عن علي قال: قال رسول الله ﷺ: مفتاح الصلاة الطهور، وتحريمها التكبير، وتحليلها التسليم». تتقيد بالإسناد والمتن.</li>
+                <li><strong>بمتنه دون إسناده</strong> — كحديث المسح على الخفين: «للمسافر ثلاثة أيام ولياليهن، وللمقيم يوم وليلة». شروط المسح: ثخين، فوق الكعب، يبدأ العد من أول مسحة لا من اللبس.</li>
+                <li><strong>باختلاف يسير</strong> — يختار المتن في الصحيحين أو أحدهما. إن كان خارج الصحيحين: يختار الأعلى إسنادًا. الثلاثيات أكثرها عن مكي بن إبراهيم — بين البخاري والنبي ثلاثة.</li>
+                <li><strong>بوصفه</strong> — كحديث القلتين، وحديث صاحب اللمعة، وحديث المسيء في صلاته، وحديث الأوعال. البحث باللفظ المشهور أو في كتب الشروح.</li>
+              </ol>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>حالات الحديث مع المصادر أربع.</li>
+                <li>الصور الأربع لورود الحديث في المصادر.</li>
+                <li>اختيار الصحيحين أو الأعلى إسنادًا.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر حالات الحديث مع المصادر.</li>
+                <li>ما الضابط في تحديد كون الحديثين حديثًا واحدًا أو حديثين؟</li>
+                <li>ما الثلاثيات؟ ولماذا كثرت في البخاري؟</li>
+                <li>كيف نحدد الحديث من خلال وصفه؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثالث: خطوات صياغة التخريج — القسم العام (8 خطوات)</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <ol class="numbered-list">
+                <li><strong>تصدير التخريج بالصيغة المناسبة للعزو</strong> — «أخرجه» أو «رواه» للمسند، «ذكره» لغير المسند.</li>
+                <li><strong>ذكر المؤلف مع المصدر</strong> — «أخرجه البخاري»، «أخرجه مسلم»...</li>
+                <li><strong>توثيق التخريج</strong> — ذكر المعلومات الدالة على موضع الحديث (كتاب كذا، باب كذا). في الرسائل الجامعية: الجزء والصفحة والطبعة. في عموم التصنيف: يكفي الإشارة مع ذكر الطبعة في قائمة المصادر.</li>
+                <li><strong>ترتيب مصادر التخريج إذا تعددت</strong> — الطريقة الأسلم: بحسب قوة المصدر (البخاري ثم مسلم ثم أبو داود ثم الترمذي ثم النسائي ثم ابن ماجه...). الطريقة الثانية: بحسب الوفيات — وفيها نظر كبير، لأن التقديم للأصح لا للأقدم.</li>
+                <li><strong>بيان راوي الحديث مع حال روايته رفعًا أو وقفًا</strong> — «رواه البخاري من حديث ابن عمر مرفوعًا، وأخرجه الترمذي من حديث عائشة موقوفًا».</li>
+                <li><strong>بيان الاتفاق والاختلاف في ألفاظ الحديث</strong> — «بتمامه»، «بمثله»، «بنحوه»، «بألفاظ مقاربة».</li>
+                <li><strong>نقل كلام أصحاب المصادر في بيان درجة الحديث</strong> — «أخرجه الترمذي وقال: حسن صحيح». <em>تنبيه:</em> قبيح بمن يخرج حديثًا في كتاب اعتنى صاحبه بالحكم ولا يذكر حكمه.</li>
+                <li><strong>بيان الشواهد والمتابعات اللازمة لتقوية الحديث عند الحاجة</strong> — الشاهد: الموافقة في المتن مع اختلاف الصحابي. المتابعة: الموافقة في السند.</li>
+              </ol>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>ثماني خطوات للقسم العام.</li>
+                <li>الترتيب بحسب القوة لا بحسب الوفيات.</li>
+                <li>التزام نقل حكم صاحب المصدر إذا حكم.</li>
+                <li>الفرق بين الشاهد والمتابعة.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر خطوات القسم العام في صياغة التخريج.</li>
+                <li>ما الفرق بين «أخرجه/رواه» و«ذكره»؟</li>
+                <li>كيف تُرتب مصادر التخريج؟ وما الطريقة الأسلم؟</li>
+                <li>ما الفرق بين الشاهد والمتابعة؟</li>
+                <li>لماذا يجب نقل حكم صاحب المصدر؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>التمييز بين المرفوع والموقوف والمقطوع ضروري للباحث.</li>
+          <li>الموقوف له حكم الرفع: شرطه صحة الإسناد وتعلقه بأمر غيبي.</li>
+          <li>أنواع المرفوع: قول، فعل، تقرير، صفة.</li>
+          <li>تحديد الحديث المقصود: التطابق في الصحابي مع التوافق في المعنى = حديث واحد.</li>
+          <li>صور ورود الحديث: بالإسناد والمتن، بالمتن دون الإسناد، باختلاف يسير، بالوصف.</li>
+          <li>القسم العام: 8 خطوات لصياغة التخريج.</li>
+          <li>القسم الخاص بالحديث المعلول — سيأتي في المجلس القادم.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 6 ============ -->
+    <section class="lecture" id="lec6">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة السادسة</span>
+        <h3 class="lecture-title">القسم الخاص — تخريج الحديث المعلول</h3>
+        <p class="lecture-subtitle">حصر طرق الحديث، تحديد المدار والرواة عنه، صور إبراز المدار، والمثال التطبيقي</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">الباب الأول: التمهيد لدراسة التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p>قبل الشروع في التخريج لا بد من التأسيس العلمي بعلوم الرواية. <strong>الوصول للمعلومة واسع</strong>، لكن <strong>الحكم مقيد بقانون المحدثين</strong>. «إنت مش هتبقى في حاجة وأنت بتخرج خالص — مفيش حد بيعمل كده خالص من علماء الحديث».</p>
+              <p><strong>توضيح:</strong> دائمًا تقترن كلمة «أخرجه» و«رواه» بالرواية المسندة، وأما لو صاحب الكتاب لم يلتزم بالأسانيد — تقول: «ذكره فلان في كتابه».</p>
+              <p><strong>متى يلزم التعيين؟</strong> إذا تعددت مصنفات المخرج المسندة. البخاري: إذا قيل «أخرجه البخاري» دون إضافة فهو الصحيح قولًا واحدًا — إلا في «الأدب المفرد» و«خلق أفعال العباد». الطبراني: له المعجم الكبير والأوسط والصغير — لا بد من التعيين. البيهقي: له السنن الكبرى والصغرى والسنن والآثار — لا بد من التعيين.</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>التأسيس العلمي ضروري قبل التخريج.</li>
+                <li>الوصول للمعلومة واسع، لكن الحكم مقيد بقانون المحدثين.</li>
+                <li>متى يلزم تعيين الكتاب في العزو ومتى لا يلزم.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما الضروري قبل الشروع في التخريج؟</li>
+                <li>ما الفرق بين الوصول للمعلومة والحكم على الخبر؟</li>
+                <li>متى يلزم تعيين الكتاب عند العزو؟ ومتى لا يلزم؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الثاني: القسم الخاص — الحديث المعلول</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>تعريفه:</strong> الحديث الذي فيه مشكلة — علة إسنادية أو متنية. لا تنكشف العلة إلا بجمع الطرق والنظر في كتب العلل.</p>
+              <p><strong>الوظيفة الأولى: حصر طرق الحديث وتحديد المدار والرواة عنه.</strong></p>
+              <ol class="numbered-list">
+                <li><strong>حصر طرق الحديث</strong> — تفرد لكل صحابي ورقة مستقلة، حتى تتكشف الطرق والأسانيد والمتون.</li>
+                <li><strong>تحديد المدار</strong> — الراوي الذي تلتقي عنده طرق الحديث. مثال: الزهري، شعبة، مالك، سفيان الثوري.</li>
+                <li><strong>المدار الأصلي</strong> — الراوي الذي تلتقي عنده جميع الطرق، ويكون أقرب إلى الصحابي راويًا. أحيانًا يكون هو الصحابي نفسه.</li>
+                <li><strong>المدار الفرعي</strong> — إذا تعددت الطرق عن بعض الرواة عن المدار الأصلي.</li>
+                <li><strong>جمع الطرق بأمرين</strong> — تتبع الرواة عن المدار، وتتبع المتابعات للمدار ومن فوقه.</li>
+              </ol>
+              <p><strong>تنبيه:</strong> هذه التقسيمات من باب التقريب فقط، وليست موجودة في الصنعة الحديثية ولا في صياغة التخريج.</p>
+              <p><strong>الوظيفة الثانية: صور إبراز المدار وراوي الحديث في التخريج</strong></p>
+              <ol class="numbered-list">
+                <li><strong>إبراز الصحابي فقط</strong> — وهذا الأصل، وهو لازم في تخريج كل حديث. مثال: «إنما الأعمال بالنيات» لن تجده إلا عن عمر، و«خيركم من تعلم القرآن وعلمه» لن تجده إلا عن عثمان.</li>
+                <li><strong>إبراز المدار ومن فوقه حتى الصحابي</strong> — أكمل، وفيه معرفة موضع التفرد والغرابة.</li>
+                <li><strong>إبراز المدار ومن فوقه ومن تحته</strong> — يلزم في حالات: تقوية الحديث (راوٍ ضعيف أو صدوق)، رفع الغرابة (إسنادية أو متنية)، وقوع اختلاف مؤثر (انقطاع، تدليس، إرسال، زيادة، نقص).</li>
+              </ol>
+              <p><strong>الغرابة:</strong> الحديث لو حُكم عليه بالغرابة من الكبار في الغالب لا تستطيع أن تنفي عنه الغرابة. من الكتب التي تعتني بهذا: جامع الترمذي، ومعاجم الطبراني (خصوصًا الأوسط). للحويني رحمه الله كتاب ماتع تتبع فيه أوهام الطبراني في هذا الباب — من وجهة نظره.</p>
+              <p><strong>التحذير:</strong> التخريج ليس مجرد «أخرجه فلان وفلان». «الموضوع مش عايز أصعب عليك الدنيا — بس الموضوع مش سهل». «لازم تكون لك خطة: هل تعزو المتن أم تعزو اللفظ؟».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>حصر الطرق: تفرد كل صحابي بورقة.</li>
+                <li>المدار: الراوي المشترك. المدار الأصلي والفرعي.</li>
+                <li>صور إبراز المدار ثلاث.</li>
+                <li>الصورة الثالثة تلزم في: تقوية الحديث، رفع الغرابة، وقوع اختلاف مؤثر.</li>
+                <li>التحذير من التساهل في التخريج.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>ما الحديث المعلول؟</li>
+                <li>كيف تُحصر طرق الحديث؟</li>
+                <li>ما المدار؟ وما المدار الأصلي والفرعي؟</li>
+                <li>اذكر صور إبراز المدار في التخريج.</li>
+                <li>متى تلزم الصورة الثالثة (إبراز المدار ومن فوقه ومن تحته)؟</li>
+                <li>ما الغرابة الإسنادية والغرابة المتنية؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثالث: المثال التطبيقي — حديث قراءة النجم</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>الحديث:</strong> «أن رسول الله ﷺ قرأ النجم فسجد فيها، ولم يبقَ أحد إلا سجد».</p>
+              <p><strong>الأسانيد:</strong></p>
+              <ul class="content-list">
+                <li>الدارمي في الصلاة: حدثنا أبو الوليد الطيالسي، ثنا شعبة، عن أبي إسحاق، به.</li>
+                <li>ابن خزيمة: عن بندار، عن محمد بن جعفر، عن شعبة، به.</li>
+                <li>الطحاوي: عن إبراهيم بن مرزوق، ثنا وهب، وعلي بن شيبة، ثنى يزيد، كلاهما عن شعبة.</li>
+                <li>ابن حبان: حدثنا أبو خليفة، ثنا محمد بن كثير، ثنا شعبة، به.</li>
+                <li>أحمد في مسنده: حدثنا عفان، ثنا شعبة، وعن يزيد ومحمد بن جعفر ويحيى بن سعيد ثلاثتهم عن شعبة، به. وعن وكيع، عن سفيان، عن أبي إسحاق، به.</li>
+              </ul>
+              <p><strong>الحل:</strong></p>
+              <ul class="content-list">
+                <li><strong>المدار الأصلي:</strong> أبو إسحاق.</li>
+                <li><strong>الرواة عن المدار الأصلي:</strong> شعبة وسفيان.</li>
+                <li><strong>المدار الفرعي:</strong> شعبة.</li>
+                <li><strong>الرواة عن المدار الفرعي:</strong> محمد بن جعفر، وهب، يزيد، عفان، يحيى بن سعيد.</li>
+              </ul>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>تطبيق عملي على تحديد المدار الأصلي والفرعي.</li>
+                <li>التخريج ليس مجرد عزو — بل نظر في الاختلافات.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر الحديث الذي ضربه المصنف مثالًا.</li>
+                <li>حدد المدار الأصلي والمدار الفرعي والرواة عن كل منهما.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>الحديث المعلول: ما فيه علة إسنادية أو متنية.</li>
+          <li>كشف العلة لا يكون إلا بجمع الطرق.</li>
+          <li>حصر الطرق: تفرد كل صحابي بورقة.</li>
+          <li>المدار الأصلي: أقرب إلى الصحابي. المدار الفرعي: تعدد الطرق عن الرواة عن المدار الأصلي.</li>
+          <li>صور إبراز المدار ثلاث.</li>
+          <li>تطبيق: حديث قراءة النجم — المدار الأصلي: أبو إسحاق، المدار الفرعي: شعبة.</li>
+          <li>التحذير من التساهل في التخريج.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ LECTURE 7 ============ -->
+    <section class="lecture" id="lec7">
+      <div class="lecture-header">
+        <span class="lecture-badge">المحاضرة السابعة</span>
+        <h3 class="lecture-title">طرق التخريج وترتيب السرد</h3>
+        <p class="lecture-subtitle">الترتيبان لطرق التخريج: السرد (6 طرق) والإسناد/المتن، ظهور الطرق وأسبابه، والفهارس</p>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">١</div>
+            <span class="accordion-title">الباب الأول: الترتيبان لطرق التخريج</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>الترتيبان:</strong></p>
+              <ol class="numbered-list">
+                <li><strong>ترتيب السرد</strong> — يأتي السرد الطرق أو المصادر تباعًا.</li>
+                <li><strong>ترتيب طرق التخريج حسب الإسناد والمتن</strong>.</li>
+              </ol>
+              <p><strong>الغاية:</strong> الوصول لمعرفة موضع الحديث في أي كتاب. «ده مربط الفرس». ثم نبدأ في رحلة أخرى هي الأصعب: الوقوف على الرواة، والعلل، وكتب الشروح، وكتب الرجال.</p>
+              <p><strong>التحذير:</strong> «قليل جدًّا تجد الذين يظهرون في هذا الباب — وأقصد الظهور الذي فيه نبوغ وتميز». «الفوضى العارمة» التي أفرزت «جيلًا من المتعالمين» — كمن قال: «أنا أفهم في الجرح والتعديل أفضل من الألباني» — «لا يصل أن يكون مسمارًا في نعله».</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٢</div>
+            <span class="accordion-title">الباب الثاني: ترتيب السرد — ست طرق</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <ol class="numbered-list">
+                <li><strong>التخريج بواسطة الراوي الأعلى</strong> — الكتب المختصة: المسانيد (مسند أحمد)، والأطراف (تحفة الأشراف للمزي).</li>
+                <li><strong>التخريج بواسطة موضوع الحديث</strong> — الكتب المختصة: السنن والجوامع (الأبواب الفقهية).</li>
+                <li><strong>التخريج بواسطة لفظة غريبة في الحديث</strong> — الكتب المختصة: المعجم المفهرس لألفاظ الحديث. مثال: السواك — تبحث في مادة (سوك) — باب السين، فصل الواو مع الكاف.</li>
+                <li><strong>التخريج بواسطة أول الحديث/مطلع الحديث</strong> — الترتيب الأبجدي. كتب: مفاتيح صحيح البخاري، ومفتاح صحيح مسلم — كلاهما لمحمد الشريف بن مصطفى.</li>
+                <li><strong>التخريج بواسطة صفة معينة في الحديث</strong> — كالحديث القدسي، المرسل، المرفوع...</li>
+                <li><strong>التخريج بواسطة برامج الحاسب</strong> — «ثقيلة على النفس جدًّا»، أدخلت في الفن ما ليس من أهله، تُحشد المصادر دون فرز ولا تمحيص.</li>
+              </ol>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>الطرق الست لترتيب السرد.</li>
+                <li>الكتب المختصة بكل طريقة.</li>
+                <li>التحذير من برامج الحاسب لغير المتخصص.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر طرق ترتيب السرد الست.</li>
+                <li>ما الكتب المختصة بكل طريقة؟</li>
+                <li>ما موقف الشيخ من برامج الحاسب في التخريج؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٣</div>
+            <span class="accordion-title">الباب الثالث: ظهور طرق التخريج في هذا العصر</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>السبب الأول — حفظ الأئمة المتقدمين:</strong></p>
+              <ul class="content-list">
+                <li>أبو زرعة عن أحمد بن حنبل: «كان يحفظ ألف ألف حديث يمليها من حفظه» — قيل: وما يدريك؟ قال: «ذاكرته فأخذت عليه الأبواب».</li>
+                <li>أحمد: «انتقيت المسند من 700000 حديث و5000 حديث».</li>
+                <li>يحيى بن معين: «كتبت بيدي ألف ألف حديث».</li>
+                <li>البخاري: «أحفظ 100000 حديث صحيح و2000 حديث غير صحيح».</li>
+                <li>مسلم: «صنفت هذا المسند الصحيح من 300000 حديث مسموعة».</li>
+                <li>أبو داود: «كتبت عن رسول الله ﷺ 500000 حديث انتخبت منها ما ضمنته كتاب السنن».</li>
+                <li>علي بن خشرم: «كان إسحاق بن راهويه يملي 70000 حديث حفظًا».</li>
+              </ul>
+              <p><strong>السبب الثاني — الحفاظ المتأخرون:</strong> المزي، الذهبي، ابن كثير. المزي: جبل من جبال العلم. الذهبي: إمام في الجرح والتعديل. ابن كثير: محدث ومؤرخ، وكان حماه المزي.</p>
+              <p><strong>السبب الثالث — تراجع الحفظ:</strong> مع مرور الزمن بدأ الحفظ يقل، وقلَّ الفهم للمتون، فظهرت الحاجة إلى وسائل مساعدة.</p>
+              <p><strong>الفهارس القديمة:</strong> التأليف على الأطراف — تحفة الأشراف للمزي. يُستعان بها في التخريج بواسطة الراوي الأعلى.</p>
+              <p><strong>الفهارس الحديثة:</strong></p>
+              <ul class="content-list">
+                <li>مفاتيح الكتب (مفاتيح صحيح البخاري، مفتاح صحيح مسلم) — لمحمد الشريف بن مصطفى.</li>
+                <li>الفهارس الموضوعية — مفتاح كنوز السنة للمستشرق فينسينج، نقله للعربية محمد فؤاد عبد الباقي.</li>
+                <li>الفهارس اللفظية — المعجم المفهرس لألفاظ الحديث لفينسينك، توفي قبل أن يتمه.</li>
+                <li>برامج الحاسب — نافعة للمتخصص، مضرة لغير المتخصص.</li>
+              </ul>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>ظهور طرق التخريج له ثلاثة أسباب.</li>
+                <li>الفهارس القديمة: الأطراف. الحديثة: مفاتيح، موضوعية، لفظية.</li>
+                <li>برامج الحاسب: نافعة للمتخصص، مضرة لغير المتخصص.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>لماذا ظهرت طرق التخريج في هذا العصر؟</li>
+                <li>ما تحفة الأشراف؟ ولماذا تُستعان بها في التخريج بالراوي الأعلى؟</li>
+                <li>اذكر أهم الفهارس الحديثة.</li>
+                <li>ما موقف الشيخ من برامج الحاسب الآلي؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-header">
+          <div class="accordion-header-main">
+            <div class="accordion-icon">٤</div>
+            <span class="accordion-title">الباب الرابع: الترتيب الثاني — بحسب الإسناد والمتن</span>
+          </div>
+          <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <div class="content-block">
+              <p><strong>التخريج بواسطة الإسناد</strong> — قسمان:</p>
+              <ol class="numbered-list">
+                <li><strong>بواسطة أحد رواته:</strong> الراوي الأعلى (الصحابي)، الراوي الأدنى (شيخ المصنف كالحميدي شيخ البخاري)، سائر الرواة.</li>
+                <li><strong>بواسطة وصف الإسناد:</strong> حديث ثلاثي، مسلسل، مرسل.</li>
+              </ol>
+              <p><strong>التخريج بواسطة المتن</strong>:</p>
+              <ul class="content-list">
+                <li><strong>موضوعه</strong> — طهارة، صلاة، حج، صيام...</li>
+                <li><strong>جزء من الحديث</strong> — أول الحديث، لفظة معينة.</li>
+              </ul>
+              <p><strong>مسألة اجتهادية:</strong> كل هذه الأمور اجتهادية — ألوان مختلفة في معرفة الطرائق والوسائل للوصول للأخبار. الخبر والحديث والأثر كلها واحد عند علماء الحديث.</p>
+              <p><strong>الموسوعة الشاملة:</strong> من أشهر البرامج — تسهل طرق البحث، وتخصص البحث في الكتب المسندة والصحاح والسنن والأجزاء الحديثية والعلل ومصطلح الحديث وأصول الفقه وأصول اللغة.</p>
+              <p><strong>التوصية الختامية:</strong> الصبر، تدوين العلم، إدمان النظر في الكتب المسندة وكتب العلل والرجال، والتدريب العملي على التخريج. «كل إنسان عليه يتقي الله في الحكم على الأحاديث — حتى لا يتورط في الحكم على الأخبار بغير علم — وتكون الخطورة قد تتعداه إلى كذب على النبي ﷺ».</p>
+            </div>
+            <div class="section-ideas">
+              <div class="section-ideas-title">الأفكار الرئيسية</div>
+              <ul class="content-list">
+                <li>التخريج بالإسناد: الراوي الأعلى، الأدنى، سائر الرواة، وصف الإسناد.</li>
+                <li>التخريج بالمتن: الموضوع، جزء من الحديث.</li>
+                <li>الموسوعة الشاملة ومزاياها.</li>
+                <li>التحذير من الحكم بغير علم.</li>
+              </ul>
+            </div>
+            <div class="section-questions">
+              <div class="section-questions-title">أسئلة مهمة</div>
+              <ol class="questions-list">
+                <li>اذكر أقسام التخريج بالإسناد.</li>
+                <li>اذكر أقسام التخريج بالمتن.</li>
+                <li>كيف تستفيد من تحفة الأشراف؟</li>
+                <li>ما مزايا الموسوعة الشاملة؟</li>
+                <li>ما التوصية الختامية للطالب الذي يريد النبوغ في علم الحديث؟</li>
+                <li>ما خطر الحكم على الأحاديث بغير علم؟</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">الخلاصة العامة للمحاضرة</div>
+        <ol>
+          <li>ترتيبان لطرق التخريج: السرد، وحسب الإسناد والمتن.</li>
+          <li>ترتيب السرد ست طرق: الراوي الأعلى، الموضوع، اللفظة الغريبة، أول الحديث، الصفة، برامج الحاسب.</li>
+          <li>ظهور طرق التخريج: بسبب تراجع الحفظ والحاجة للوسائل.</li>
+          <li>الفهارس: قديمة (الأطراف) وحديثة (مفاتيح، موضوعية، لفظية).</li>
+          <li>برامج الحاسب: نافعة للمتخصص، مضرة لغير المتخصص.</li>
+          <li>التوصية: الصبر، تدوين العلم، إدمان النظر، التدريب العملي.</li>
+          <li>التحذير: الحكم بغير علم خطر عظيم.</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p><strong>تخريج الحديث — سلسلة محاضرات الشيخ مؤمن البدوي</strong></p>
+      <p>شرح كتاب «تخريج الحديث» للدكتور عبد العزيز الشايع — أكاديمية نسق</p>
+      <p style="margin-top: 12px; font-size: 13px; opacity: 0.7;">تم التنسيق الأكاديمي والعلمي بعناية، دون حذف أو إضافة — الحمد لله رب العالمين</p>
+    </footer>
+
+  </main>
+</div>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
+
+<script>
+(function() {
+  'use strict';
+
+  // ===== Theme Toggle =====
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️';
+  }
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeToggle.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+
+  // ===== Print =====
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // ===== Reading Progress =====
+  const progressBar = document.getElementById('readingProgress');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = percent + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // ===== Accordion =====
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      const isOpen = header.classList.contains('open');
+
+      if (isOpen) {
+        header.classList.remove('open');
+        body.style.maxHeight = '0';
+      } else {
+        header.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        // Recompute after transition for nested content
+        setTimeout(() => {
+          if (header.classList.contains('open')) {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        }, 400);
+      }
+    });
+  });
+
+  // Auto-resize open accordions when window resizes
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.accordion-header.open').forEach(header => {
+      const body = header.nextElementSibling;
+      body.style.maxHeight = 'none';
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+  });
+
+  // ===== Build TOC =====
+  const tocList = document.getElementById('tocList');
+  const lectures = document.querySelectorAll('.lecture');
+  lectures.forEach(lecture => {
+    const id = lecture.id;
+    const badge = lecture.querySelector('.lecture-badge').textContent;
+    const title = lecture.querySelector('.lecture-title').textContent;
+
+    const li = document.createElement('li');
+    li.className = 'toc-item';
+    const a = document.createElement('a');
+    a.className = 'toc-link';
+    a.href = '#' + id;
+    a.dataset.target = id;
+
+    const num = document.createElement('span');
+    num.className = 'toc-num';
+    num.textContent = badge.replace('المحاضرة ', '');
+
+    const txt = document.createElement('span');
+    txt.className = 'toc-text';
+    txt.textContent = title;
+
+    a.appendChild(num);
+    a.appendChild(txt);
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // ===== Active TOC on scroll =====
+  const tocLinks = document.querySelectorAll('.toc-link');
+  function updateActiveToc() {
+    const scrollY = window.scrollY + 150;
+    let currentId = null;
+    lectures.forEach(lec => {
+      if (lec.offsetTop <= scrollY) currentId = lec.id;
+    });
+    tocLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.target === currentId);
+    });
+  }
+  window.addEventListener('scroll', updateActiveToc, { passive: true });
+
+  // ===== Smooth scroll =====
+  document.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(link.dataset.target);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.innerWidth <= 768) closeSidebar();
+      }
+    });
+  });
+
+  // ===== Search =====
+  const searchInput = document.getElementById('searchInput');
+  let searchTimeout;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      const query = e.target.value.trim().toLowerCase();
+      performSearch(query);
+    }, 250);
+  });
+
+  function performSearch(query) {
+    // Remove previous highlights
+    document.querySelectorAll('mark').forEach(m => {
+      const parent = m.parentNode;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+
+    if (!query || query.length < 2) {
+      document.querySelectorAll('.lecture').forEach(l => l.style.display = '');
+      tocLinks.forEach(l => l.parentElement.style.display = '');
+      return;
+    }
+
+    // Filter lectures
+    lectures.forEach(lecture => {
+      const text = lecture.textContent.toLowerCase();
+      const matches = text.includes(query);
+      lecture.style.display = matches ? '' : 'none';
+      const tocLink = document.querySelector(`.toc-link[data-target="${lecture.id}"]`);
+      if (tocLink) tocLink.parentElement.style.display = matches ? '' : 'none';
+
+      if (matches) {
+        // Highlight matches
+        highlightMatches(lecture, query);
+        // Expand all accordions in matched lectures
+        lecture.querySelectorAll('.accordion-header').forEach(h => {
+          if (!h.classList.contains('open')) {
+            h.classList.add('open');
+            const body = h.nextElementSibling;
+            body.style.maxHeight = 'none';
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      }
+    });
+  }
+
+  function highlightMatches(root, query) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.nodeValue.toLowerCase().includes(query)) {
+        // Skip inside already marked and skip in buttons
+        if (node.parentElement.tagName === 'MARK' || node.parentElement.classList.contains('accordion-toggle')) continue;
+        nodes.push(node);
+      }
+    }
+    nodes.forEach(textNode => {
+      const text = textNode.nodeValue;
+      const lower = text.toLowerCase();
+      const parts = [];
+      let lastIndex = 0;
+      let idx;
+      while ((idx = lower.indexOf(query, lastIndex)) !== -1) {
+        if (idx > lastIndex) parts.push(document.createTextNode(text.slice(lastIndex, idx)));
+        const mark = document.createElement('mark');
+        mark.textContent = text.slice(idx, idx + query.length);
+        parts.push(mark);
+        lastIndex = idx + query.length;
+      }
+      if (lastIndex < text.length) parts.push(document.createTextNode(text.slice(lastIndex)));
+      if (parts.length > 1) {
+        const frag = document.createDocumentFragment();
+        parts.forEach(p => frag.appendChild(p));
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+    });
+  }
+
+  // ===== Mobile Menu =====
+  const sidebar = document.getElementById('sidebar');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    mobileOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  mobileMenuBtn.addEventListener('click', () => {
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+  });
+  mobileOverlay.addEventListener('click', closeSidebar);
+
+  // ===== Back to Top =====
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ===== Initialize =====
+  updateProgress();
+  updateActiveToc();
+})();
+</script>
+</body>
+</html>
